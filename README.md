@@ -39,7 +39,6 @@ project-root/
 ## 🔧 Backend Setup
 
 ```bash
-cd backend
 python3 -m venv venv
 source venv/bin/activate    # Windows: .\venv\Scripts\Activate
 pip install --upgrade pip
@@ -60,7 +59,7 @@ pip install -r requirements.txt
 ## 💻 Frontend Setup
 
 ```bash
-cd ../frontend
+cd pdf-uploader
 npm install
 ```
 
@@ -75,67 +74,22 @@ This installs:
 
 ## ▶️ Start the App
 
-### Option 1: Run backend and frontend separately
 
 In two terminal tabs:
 
 ```bash
 # Tab 1 (backend)
-cd backend
 source venv/bin/activate
 python app.py
 
 # Tab 2 (frontend)
-cd frontend
+cd pdf-uploader
 npm start
 ```
 
 ---
 
-### Option 2: Use the startup script
 
-Create start.sh in the root:
-
-```bash
-#!/usr/bin/env bash
-set -e
-
-# backend setup
-cd backend
-python3 -m venv venv 2>/dev/null || true
-source venv/bin/activate
-pip install -r requirements.txt
-
-# frontend setup
-cd ../frontend
-npm install
-
-# start both
-npm run dev
-```
-
-Make it executable:
-
-```bash
-chmod +x start.sh
-./start.sh
-```
-
----
-
-## 🔁 NPM Scripts (in frontend/package.json)
-
-```json
-"scripts": {
-  "client": "react-scripts start",
-  "server": "cd ../backend && source ../backend/venv/bin/activate && python app.py",
-  "dev": "concurrently -k \"npm run client\" \"npm run server\""
-}
-```
-
-> On Windows: change `source ...` to `call ../backend/venv/Scripts/activate`
-
----
 
 ## ✅ Test Checklist
 
